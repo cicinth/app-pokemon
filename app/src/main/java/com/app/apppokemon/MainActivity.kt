@@ -25,13 +25,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         val cards = binding.cardsPokemon
         cards.layoutManager = GridLayoutManager(this, 3)
-        configRecicleView()
         getData()
     }
 
-    fun configRecicleView(){
-//        val cardPokemonView = binding.cardsPokemon
-//        cardPokemonView.adapter = PokemonAdapter(this, pokemons )
+    fun configRecicleView(pokemons: List<Pokemon>){
+        val cardPokemonView = binding.cardsPokemon
+        cardPokemonView.adapter = PokemonAdapter(this, pokemons )
     }
     fun getData(){
         val retrofitClient = NetworkUtils.getRetrofitInstance()
@@ -41,10 +40,10 @@ class MainActivity : AppCompatActivity() {
 
         response.enqueue(object  : Callback<Pokemons> {
             override fun onResponse(call: Call<Pokemons>, response: Response<Pokemons>) {
-               response.body()?.results?.forEach {
-                   Log.i("GetPokemon", it.name)
-
-               }
+                val pokemons = response.body()?.results
+                if (pokemons != null) {
+                    configRecicleView(pokemons)
+                }
             }
 
             override fun onFailure(call: Call<Pokemons>, t: Throwable) {
