@@ -2,7 +2,6 @@ package com.app.apppokemon
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import retrofit2.Callback

@@ -15,3 +15,15 @@ data class Pokemon(
     @JsonProperty("url")
     val url: String
 )
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+data class PokemonDetails(
+    @JsonProperty("sprites")
+    val sprites: Sprites
+)
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+data class Sprites(
+    @JsonProperty("front_default")
+    val image: String
+)
