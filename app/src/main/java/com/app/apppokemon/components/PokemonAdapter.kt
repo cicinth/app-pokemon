@@ -76,6 +76,7 @@ class PokemonAdapter(
             ) {
                 val url = response.body()?.sprites?.image
                 bindingImagePokemom.imageView.load(url)
+                bindingImagePokemom.abilidade.text = response.body()?.abilities?.first()?.ability?.name
                 AlertDialog.Builder(context)
                     .setView(bindingImagePokemom.root)
                     .setPositiveButton("Ok"){_,_->}

@@ -19,11 +19,25 @@ data class Pokemon(
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class PokemonDetails(
     @JsonProperty("sprites")
-    val sprites: Sprites
+    val sprites: Sprites,
+    @JsonProperty("abilities")
+    val abilities: List<Abilities>
 )
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class Sprites(
     @JsonProperty("front_default")
     val image: String
+)
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+data class Abilities(
+    @JsonProperty("ability")
+    val ability: Ability
+)
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+data class Ability(
+    @JsonProperty("name")
+    val name: String
 )
